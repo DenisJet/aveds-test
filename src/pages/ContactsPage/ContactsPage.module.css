@@ -1,0 +1,21 @@
+.main {
+  padding: 0 10px;
+  max-width: 1066px;
+  margin: 0 auto;
+}
+
+.mainTitle {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 39px;
+  margin-top: 55;
+}
+
+@media screen and (width >= 860px) {
+  .mainTitle {
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 80px;
+    margin-top: 185px;
+  }
+}

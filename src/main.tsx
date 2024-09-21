@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RequireAuth } from './helpers/RequireAuth.tsx';
 import Layout from './layout/Layout.tsx';
 import MainPage from './pages/MainPage/MainPage.tsx';
+import ContactsPage from './pages/ContactsPage/ContactsPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/contacts',
-        element: <div>Contacts</div>,
+        element: <ContactsPage />,
       },
       {
         path: '*',
