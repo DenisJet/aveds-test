@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RequireAuth } from './helpers/RequireAuth.tsx';
-import { Layout } from './layout/Layout.tsx';
+import Layout from './layout/Layout.tsx';
+import MainPage from './pages/MainPage/MainPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <div>Main page</div>,
+        element: <MainPage />,
       },
       {
         path: '/contacts',

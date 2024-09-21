@@ -21,7 +21,7 @@
 .headerButton {
   background-color: var(--white-color);
   color: var(--primary-color);
-  font-size: 500;
+  font-weight: 500;
   font-size: 20px;
   cursor: pointer;
   transition: 0.5s;
@@ -37,13 +37,9 @@
   }
 }
 
-@media screen and (width >= 1440px) {
-  .headerContainer {
-    padding-left: 70px;
-    padding-right: 70px;
-  }
-
+@media screen and (width >= 860px) {
   .headerButton {
+    padding: 8px 60px;
     margin-left: 50px;
   }
 }
