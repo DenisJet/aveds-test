@@ -1,6 +1,6 @@
 .main {
-  padding: 55px 10px 0 10px;
-  max-width: 1046px;
+  padding: 55px 10px;
+  max-width: 1066px;
   margin: 0 auto;
 }
 
@@ -13,17 +13,22 @@
 
 .mainButtons {
   display: flex;
-  gap: 10px
+  gap: 10px;
+  margin-bottom: 30px;
 }
 
 @media screen and (width >= 860px) {
   .main {
-    padding: 95px 10px 0 10px;
+    padding: 95px 10px;
   }
 
   .mainTitle {
     font-weight: 700;
     font-size: 58px;
     line-height: 80px;
+  }
+
+  .mainButtons {
+    margin-bottom: 95px;
   }
 }

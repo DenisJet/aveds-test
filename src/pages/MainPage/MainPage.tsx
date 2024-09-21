@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import styles from './MainPage.module.css';
+import ServicesList from '../../components/ServicesList/ServicesList';
+import { services } from '../../mock/services';
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ export default function MainPage() {
           Контакты
         </Button>
       </div>
+      <ServicesList servicesList={services} />
     </main>
   );
 }
