@@ -1,9 +1,14 @@
 import { Link, Outlet } from 'react-router-dom';
 import styles from './Layout.module.css';
+import { useContext } from 'react';
+import { ModalContext } from '../context/modalContext';
+import Modal from '../components/Modal/Modal';
 
 export default function Layout() {
+  const { isModalOpen, setIsModalOpen } = useContext(ModalContext);
+
   return (
-    <div>
+    <>
       <header className={styles.header}>
         <div className={styles.headerContainer}>
           <Link to='/'>
@@ -13,7 +18,13 @@ export default function Layout() {
             <Link className={styles.headerLink} to='/contacts'>
               Контакты
             </Link>
-            <button className={styles.headerButton} type='button'>
+            <button
+              className={styles.headerButton}
+              type='button'
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+            >
               Войти
             </button>
           </div>
@@ -22,6 +33,7 @@ export default function Layout() {
       <div>
         <Outlet />
       </div>
-    </div>
+      {isModalOpen && <Modal />}
+    </>
   );
 }

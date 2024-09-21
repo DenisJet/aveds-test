@@ -6,6 +6,7 @@ import { RequireAuth } from './helpers/RequireAuth.tsx';
 import Layout from './layout/Layout.tsx';
 import MainPage from './pages/MainPage/MainPage.tsx';
 import ContactsPage from './pages/ContactsPage/ContactsPage.tsx';
+import { ModalContextProvider } from './context/modalContext.tsx';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ModalContextProvider>
+      <RouterProvider router={router} />
+    </ModalContextProvider>
   </StrictMode>
 );
