@@ -18,13 +18,7 @@ export default function Layout() {
             <Link className={styles.headerLink} to='/contacts'>
               Контакты
             </Link>
-            <button
-              className={styles.headerButton}
-              type='button'
-              onClick={() => {
-                setIsModalOpen(true);
-              }}
-            >
+            <button className={styles.headerButton} type='button' onClick={() => setIsModalOpen(true)}>
               Войти
             </button>
           </div>
