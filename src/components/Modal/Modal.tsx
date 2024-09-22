@@ -2,6 +2,7 @@ import { FormEvent, useContext, useState } from 'react';
 import styles from './Modal.module.css';
 import { ModalContext } from '../../context/modalContext';
 import Button from '../Button/Button';
+import usersData from './../../mock/users.json';
 
 export type LoginForm = {
   login: {
@@ -64,7 +65,16 @@ export default function Modal(): JSX.Element {
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(login, password);
+    const existUser = usersData.users.find((user) => user.login === login && user.password === password);
+    if (existUser) {
+      localStorage.setItem('user', existUser.name);
+      setIsTruCredentials(true);
+      window.location.replace(`/users/${existUser.id}`);
+    } else {
+      if (!loginError && !passwordError) {
+        setIsTruCredentials(false);
+      }
+    }
   };
 
   if (isModalOpen) {

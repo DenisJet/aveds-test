@@ -2,9 +2,9 @@ import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 export const RequireAuth = ({ children }: { children: ReactNode }) => {
-  const isAuth = localStorage.getItem('isAuth');
+  const user = localStorage.getItem('user');
 
-  if (!isAuth) {
+  if (!user) {
     return <Navigate to='/' replace />;
   }
 
