@@ -24,6 +24,15 @@
   margin-top: 100px;
 }
 
+.modalClose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .modal.active {
   opacity: 1;
   pointer-events: all;
