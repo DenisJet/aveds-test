@@ -6,8 +6,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 10px;
-  max-width: 1300px;
+  padding: 16px 10px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -21,14 +21,19 @@
 .headerButton {
   background-color: var(--white-color);
   color: var(--primary-color);
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 20px;
   cursor: pointer;
   transition: 0.5s;
-  padding: 6px 20px;
+  padding: 6px 18px;
   border: 2px solid var(--primary-color);
   border-radius: 7px;
-  margin-left: 10px;
+  margin-left: 2px;
+  font-family: Montserrat;
+  line-height: 24.38px;
+  text-align: center;
+
 
   &:hover {
     background-color: var(--primary-color);
@@ -39,7 +44,7 @@
 
 @media screen and (width >= 860px) {
   .headerButton {
-    padding: 8px 60px;
+    padding: 6px 60px;
     margin-left: 50px;
   }
 }

@@ -11,7 +11,7 @@ export default function ServiceCard({ serviceCard }: { serviceCard: ServiceCardP
   return (
     <div className={styles.card}>
       <img className={styles.cardImage} src={serviceCard.imageUrl} alt={serviceCard.title} />
-      <h3 className={styles.cardTitle}>{serviceCard.title}</h3>
+      <h5 className={styles.cardTitle}>{serviceCard.title}</h5>
       <div className={styles.cardDivider}></div>
       <p className={styles.cardDescription}>{serviceCard.description}</p>
     </div>
