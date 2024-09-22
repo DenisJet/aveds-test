@@ -61,6 +61,12 @@
   font-size: 12px;
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .small {
   color: var(--secondary-font-color);
 }

@@ -75,9 +75,7 @@ export default function Modal(): JSX.Element {
       setIsModalOpen(false);
       navigate(`/users/${existUser.id}`);
     } else {
-      if (!loginError && !passwordError) {
-        setIsTruCredentials(false);
-      }
+      setIsTruCredentials(false);
     }
   };
 
@@ -122,7 +120,7 @@ export default function Modal(): JSX.Element {
               </span>
               {passwordDirty && passwordError && <small className={styles.error}>Минимум 8 символов</small>}
             </div>
-            <div>
+            <div className={styles.buttonContainer}>
               {!isTrueCredentials && <span className={styles.submitError}>Неверный логин или пароль</span>}
               <Button type='submit'>Войти</Button>
             </div>
