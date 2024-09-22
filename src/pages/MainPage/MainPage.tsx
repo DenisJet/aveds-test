@@ -10,13 +10,20 @@ export default function MainPage() {
   const { setIsModalOpen } = useContext(ModalContext);
   const navigate = useNavigate();
 
+  const user = localStorage.getItem('user');
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+  };
+
   return (
     <main className={styles.main}>
       <h1 className={styles.mainTitle}>
         Место для получения<br></br> медицинской помощи
       </h1>
       <div className={styles.mainButtons}>
-        <Button onClick={() => setIsModalOpen(true)}>Войти</Button>
+        <Button onClick={user ? handleLogout : () => setIsModalOpen(true)}>{user ? 'Выйти' : 'Войти'}</Button>
         <Button isPrimaryColor={false} onClick={() => navigate('/contacts')}>
           Контакты
         </Button>

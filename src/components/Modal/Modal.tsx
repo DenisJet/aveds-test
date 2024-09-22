@@ -3,6 +3,7 @@ import styles from './Modal.module.css';
 import { ModalContext } from '../../context/modalContext';
 import Button from '../Button/Button';
 import usersData from './../../mock/users.json';
+import { useNavigate } from 'react-router-dom';
 
 export type LoginForm = {
   login: {
@@ -25,6 +26,8 @@ export default function Modal(): JSX.Element {
   const [passwordType, setPasswordType] = useState('password');
 
   const [isTrueCredentials, setIsTruCredentials] = useState(true);
+
+  const navigate = useNavigate();
 
   const loginHandler = (e: FormEvent<HTMLInputElement>) => {
     setLogin(e.currentTarget.value);
@@ -69,7 +72,8 @@ export default function Modal(): JSX.Element {
     if (existUser) {
       localStorage.setItem('user', existUser.name);
       setIsTruCredentials(true);
-      window.location.replace(`/users/${existUser.id}`);
+      setIsModalOpen(false);
+      navigate(`/users/${existUser.id}`);
     } else {
       if (!loginError && !passwordError) {
         setIsTruCredentials(false);

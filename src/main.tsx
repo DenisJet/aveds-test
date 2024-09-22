@@ -7,6 +7,7 @@ import Layout from './layout/Layout.tsx';
 import MainPage from './pages/MainPage/MainPage.tsx';
 import ContactsPage from './pages/ContactsPage/ContactsPage.tsx';
 import { ModalContextProvider } from './context/modalContext.tsx';
+import UserPage from './pages/UserPage/UserPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/users/:id',
-        element: <div>user page</div>,
+        element: <UserPage />,
       },
     ],
   },
