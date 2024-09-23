@@ -19,8 +19,6 @@ export default function Modal(): JSX.Element {
 
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [loginDirty, setLoginDirty] = useState(false);
-  const [passwordDirty, setPasswordDirty] = useState(false);
   const [loginError, setLoginError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [passwordType, setPasswordType] = useState('password');
@@ -31,6 +29,7 @@ export default function Modal(): JSX.Element {
 
   const loginHandler = (e: FormEvent<HTMLInputElement>) => {
     setLogin(e.currentTarget.value);
+    setIsTruCredentials(true);
     if (e.currentTarget.value.length < 3) {
       setLoginError(true);
     } else {
@@ -40,21 +39,11 @@ export default function Modal(): JSX.Element {
 
   const passwordHandler = (e: FormEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
+    setIsTruCredentials(true);
     if (e.currentTarget.value.length < 8) {
       setPasswordError(true);
     } else {
       setPasswordError(false);
-    }
-  };
-
-  const blurHandler = (e: FormEvent<HTMLInputElement>) => {
-    switch (e.currentTarget.name) {
-      case 'login':
-        setLoginDirty(true);
-        break;
-      case 'password':
-        setPasswordDirty(true);
-        break;
     }
   };
 
@@ -68,7 +57,16 @@ export default function Modal(): JSX.Element {
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
+
+    const isValid = !!login && !!password;
+    if (!isValid) {
+      setLoginError(!login);
+      setPasswordError(!password);
+      return;
+    }
+
     const existUser = usersData.users.find((user) => user.login === login && user.password === password);
+
     if (existUser) {
       localStorage.setItem('user', existUser.name);
       setIsTruCredentials(true);
@@ -106,20 +104,18 @@ export default function Modal(): JSX.Element {
               <input
                 className={loginError ? styles.inputError : ''}
                 onChange={(e) => loginHandler(e)}
-                onBlur={(e) => blurHandler(e)}
                 id='login'
                 name='login'
                 type='text'
                 placeholder='Логин'
               />
-              {loginDirty && loginError && <small className={styles.error}>Минимум 3 символа</small>}
+              {loginError && <small className={styles.error}>Минимум 3 символа</small>}
             </div>
             <div className={styles.modalFormField}>
               <label htmlFor='password'>Ваш пароль</label>
               <input
                 className={loginError ? styles.inputError : ''}
                 onChange={(e) => passwordHandler(e)}
-                onBlur={(e) => blurHandler(e)}
                 id='password'
                 name='password'
                 type={passwordType}
@@ -128,7 +124,7 @@ export default function Modal(): JSX.Element {
               <span className={styles.hide} onClick={passwordTypeChange}>
                 <img src='/hide.svg' alt='показать' width={24} height={24} />
               </span>
-              {passwordDirty && passwordError && <small className={styles.error}>Минимум 8 символов</small>}
+              {passwordError && <small className={styles.error}>Минимум 8 символов</small>}
             </div>
             <div className={styles.buttonContainer}>
               {!isTrueCredentials && <span className={styles.submitError}>Неверный логин или пароль</span>}
